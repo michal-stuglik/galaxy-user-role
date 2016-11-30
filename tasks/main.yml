@@ -1,15 +1,15 @@
 ---
 
-  - name: Create group role & GID {{ guser }}
-    group: name={{ project_user }} state=present gid={{ project_user_guid }}
+  - name: Create group role & GID {{ user }}
+    group: name={{ user }} state=present gid={{ user_guid }}
 
   - name: Create user role & UID
-    user: home={{ project_user_home }} name={{ project_user }} state=present shell=/bin/bash uid={{ project_user_guid }} group={{ project_user }}
+    user: home={{ user_home }} name={{ user }} state=present shell=/bin/bash uid={{ user_guid }} group={{ user }}
 
   - name: SSH key deployment for galaxy user
-    authorized_key: user={{ project_user }} key="{{ item }}"
+    authorized_key: user={{ user }} key="{{ item }}"
     with_file:
       - ~/.ssh/id_rsa.pub
 
   - name: Update mode to the project directory
-    file: group={{ project_user }} owner={{ project_user }} mode=755 state=directory path={{ project_user_home }}
+    file: group={{ user }} owner={{ user }} mode=755 state=directory path={{ user_home }}
