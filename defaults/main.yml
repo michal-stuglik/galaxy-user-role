@@ -1,5 +1,5 @@
 ---
 
-guser: galaxy
-guser_guid: 512
-guser_home: /home/galaxy
+project_user: galaxy
+project_user_guid: 512
+project_user_home: /home/galaxy
